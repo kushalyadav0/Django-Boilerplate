@@ -1,70 +1,49 @@
 # 🧩 Django Basic Boilerplate
 
-A clean and minimal Django boilerplate to kickstart new projects with a structured setup for settings, apps, templates, and static files.
+A clean and minimal Django boilerplate to kickstart new projects — now with Tailwind CSS integration and a structured setup for settings, apps, templates, and static files.
 
 ---
 
 ## 🚀 Features
 
-- Modular settings
-- Structured project layout
-- Pre-configured templates and static directories
+- Modular Django settings
+- Pre-configured app layout
+- Tailwind CSS via `django-tailwind`
+- Structured templates and static directories
 - Environment variable support via `.env`
-- App structure ready for scaling
+- Ready-to-scale project architecture
+
+---
+
+## 🖌️ Styling & Frontend
+
+- Integrated [Django-Tailwind](https://django-tailwind.readthedocs.io/en/latest/) for utility-first CSS styling.
+- Hot-reload support for Tailwind during development.
+- Custom static directory setup for additional CSS, JS, and image assets.
 
 ---
 
 ## 📁 Project Structure
+
 ```
 Project
 ├── LICENSE
+├── manage.py
 ├── project
-│   ├── app
-│   │   ├── admin.py
-│   │   ├── apps.py
-│   │   ├── __init__.py
-│   │   ├── migrations
-│   │   │   ├── __init__.py
-│   │   │   └── __pycache__
-│   │   │       └── __init__.cpython-312.pyc
-│   │   ├── models.py
-│   │   ├── __pycache__
-│   │   │   ├── admin.cpython-312.pyc
-│   │   │   ├── apps.cpython-312.pyc
-│   │   │   ├── __init__.cpython-312.pyc
-│   │   │   ├── models.cpython-312.pyc
-│   │   │   ├── urls.cpython-312.pyc
-│   │   │   └── views.cpython-312.pyc
-│   │   ├── tests.py
-│   │   ├── urls.py
-│   │   └── views.py
+│   ├── app/
+│   ├── Django-Boilerplate/  # Tailwind app
+│   ├── static/              # Static files (e.g., CSS, JS)
+│   ├── templates/           # HTML templates
 │   ├── db.sqlite3
-│   ├── Django-Boilerplate
-│   │   └── project
-│   │       └── static
-│   │           ├── admin
-│   │           │   ├── css
-│   │           │   ├── img
-│   │           │   └── js
-│   │           └── style.css
-│   ├── manage.py
-│   ├── project
-│   │   ├── asgi.py
-│   │   ├── __init__.py
-│   │   ├── __pycache__
-│   │   │   ├── __init__.cpython-312.pyc
-│   │   │   ├── settings.cpython-312.pyc
-│   │   │   ├── urls.cpython-312.pyc
-│   │   │   └── wsgi.cpython-312.pyc
-│   │   ├── settings.py
-│   │   ├── urls.py
-│   │   └── wsgi.py
-│   ├── requirements.txt
-│   ├── static
-│   │   └── style.css
-│   └── templates
-│       ├── base.html
-│       └── index.html
+│   └── project/
+│       ├── settings.py
+│       ├── urls.py
+│       ├── wsgi.py
+│       └── ...
+├── requirements.txt
+├── tailwind.config.js
+├── postcss.config.js
+├── .env
 └── README.md
 ```
 
@@ -77,47 +56,84 @@ Project
 ```bash
 git clone https://github.com/kushalyadav0/Django-Boilerplate.git
 cd Django-Boilerplate
-
 ```
+
 ### 2. Set Up Virtual Environment
+
 ```bash
 python -m venv venv
-source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+source venv/bin/activate  # Windows: venv\Scripts\activate
 ```
 
 ### 3. Install Requirements
+
 ```bash
 pip install -r requirements.txt
 ```
 
 ### 4. Setup `.env`
-Create a `.env` file based on the provided example:
-```bash
+
+Create a `.env` file:
+
+```env
 SECRET_KEY=your-django-secret-key
 DEBUG=True
 ```
 
 ### 5. Run Migrations
+
 ```bash
 python manage.py migrate
 ```
 
-### 6. Start Development Server
+### 6. Tailwind Setup
+
+Install Tailwind dependencies inside the Tailwind app directory:
+
+```bash
+python manage.py tailwind install
+```
+
+Run Tailwind in dev mode (with hot reload):
+
+```bash
+python manage.py tailwind start
+```
+
+### 7. Start Development Server
+
+In a **separate terminal**, run:
+
 ```bash
 python manage.py runserver
 ```
+
 Visit: http://127.0.0.1:8000
 
-### 🔐 Environment Variables
-Use the `.env` file to store secrets and config. Add your:
-```bash
-SECRET_KEY
+---
 
-DEBUG
+## 🧪 Testing Tailwind
 
-DATABASE_URL (for production, if needed)
+Make sure your template extends `base.html` and uses Tailwind classes. Example:
 
-API_KEY
+```html
+<h1 class="text-3xl font-bold text-blue-600">Hello, Tailwind!</h1>
 ```
-### 🪪 License
-This project is licensed under the MIT License.
+
+---
+
+## 🔐 Environment Variables
+
+Use the `.env` file to store secrets and configuration:
+
+```env
+SECRET_KEY=...
+DEBUG=True
+DATABASE_URL=...
+```
+
+---
+
+## 🪪 License
+
+This project is licensed under the [MIT License](LICENSE).
